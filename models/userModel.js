@@ -3,16 +3,16 @@ import mongoose from "mongoose";
 const schema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, "Please provide name"],
     },
     email: {
         type: String,
-        unique: true,
+        unique: [true, "Please provide email"],
         required: true
     },
     password: {
         type: String,
-        required: true,
+        required: [true, "Please provide password"],
         validate: {
             validator: (password) => {
                 return password.length >= 4
@@ -20,6 +20,13 @@ const schema = new mongoose.Schema({
             message: "Password should be greater than 4 character length"
         },
         select: false
+    },
+    avatar:{
+        type:String,
+    },
+    role:{
+        type:String,
+        default:'user'
     },
     createdAt: {
         type: Date,

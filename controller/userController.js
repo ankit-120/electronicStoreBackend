@@ -5,7 +5,8 @@ import jwt from 'jsonwebtoken';
 
 export const createUser = async (req, res, next) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password } = JSON.parse(req.body.json);
+        const avatar = req.file.filename;
         let user = await User.findOne({ email })
         if (user) {
             return next(new customError('User already exists', 400));
@@ -16,7 +17,8 @@ export const createUser = async (req, res, next) => {
         user = await User.create({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            avatar
         });
 
         const token = jwt.sign({ _id: user._id, name: user.name }, process.env.SECRET_KEY);
@@ -35,7 +37,7 @@ export const createUser = async (req, res, next) => {
                 user
             })
     } catch (error) {
-        console.log("error")
+        console.log(error)
         next(error);
     }
 }
