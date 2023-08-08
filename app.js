@@ -10,7 +10,7 @@ import cors from "cors";
 import ExpressFormidable from "express-formidable";
 
 dotenv.config({
-  path: "./config/.env",
+    path: "./config/.env",
 });
 
 connectDb();
@@ -31,9 +31,9 @@ app.use("/api/product", productRoute);
 
 const port = process.env.PORT;
 app.listen(port, () => {
-  console.log(
-    `Server is working on port:${process.env.PORT} on ${process.env.NODE_ENV} mode`
-  );
+    console.log(
+        `Server is working on port:${process.env.PORT} on ${process.env.NODE_ENV} mode`
+    );
 });
 
 //using error middleware

@@ -1,5 +1,11 @@
 import express from "express";
-import { addProduct, getProduct } from "../controller/productController.js";
+import {
+    addProduct,
+    getBrands,
+    getCategories,
+    getProduct,
+    getProductById,
+} from "../controller/productController.js";
 import { uploadMiddleware } from "../middlewares/upload.js";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.js";
 
@@ -13,5 +19,8 @@ router.post(
     addProduct
 );
 router.get("/", getProduct);
+router.get("/categories", getCategories);
+router.get("/brands", getBrands);
+router.get("/:id", getProductById);
 
 export default router;
