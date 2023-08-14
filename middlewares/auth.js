@@ -17,6 +17,18 @@ export const isAuthenticated = async (req, res, next) => {
     next();
 };
 
+// export const userExist = async (req, res, next) => {
+//     console.log("check->", req.fields);
+//     const user = await User.findOne({
+//         email: JSON.parse(req.fields.json).email,
+//     });
+//     if (user) {
+//         return next(new customError("Email already exist", 400));
+//     }
+//     console.log(next());
+//     next();
+// };
+
 export const isAdmin = (role) => {
     return (req, res, next) => {
         if (role !== req.user.role) {
