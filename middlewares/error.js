@@ -3,6 +3,7 @@ import { customError } from "../utils/customClass.js";
 export const errorMiddleware = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.message = err.message || "Internal Server Error";
+    console.log("err");
 
     if (err.name === "CastError") {
         err = new customError(`Resource not found ${err.path}`, 404);

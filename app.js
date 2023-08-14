@@ -22,7 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.static("public"));
-// app.use(ExpressFormidable())
 
 //using routes
 app.use("/api", userRoute);
