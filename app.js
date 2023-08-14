@@ -7,7 +7,6 @@ import productRoute from "./routes/productRoute.js";
 import { errorMiddleware } from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import ExpressFormidable from "express-formidable";
 
 dotenv.config({
     path: "./config/.env",
@@ -19,6 +18,7 @@ const app = express();
 
 //using middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.static("public"));

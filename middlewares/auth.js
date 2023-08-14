@@ -17,6 +17,11 @@ export const isAuthenticated = async (req, res, next) => {
     next();
 };
 
+export const userExist = async (req, res, next) => {
+    console.log(req.body.json);
+    next();
+};
+
 export const isAdmin = (role) => {
     return (req, res, next) => {
         if (role !== req.user.role) {
